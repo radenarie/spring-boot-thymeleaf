@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>Users</title>
+    <th:block th:include="profile/layout/header"></th:block>
+</head>
+<body>
+<div class="container">
+    <div th:if="${not #lists.isEmpty(Profile)}">
+        <h2>All Products</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Nama Lengkap</th>
+                <th>Alamat</th>
+                <th>Umur</th>
+                <th>Jenis Kelamin</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="data : ${Profile}">
+                <td th:text="${data.namaLengkap}">Nama Lengkap</td>
+                <td th:text="${data.alamat}">Alamat</td>
+                <td th:text="${data.umur}">Umur</td>
+                <td th:text="${data.jenisKelamin}">Jenis Kelamin</td>
+                <td><a th:href="${'/pro/update/' + data.id}" class="btn btn-default">Edit</a></td>
+                <td><a th:href="${'/pro/delete/' + data.id}" class="btn btn-danger">Delete</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>
